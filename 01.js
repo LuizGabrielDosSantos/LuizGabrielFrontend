@@ -24,13 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
       adicionarItem();
   });
 
-  // Adiciona evento de clique para os botões
+  //clique para os botões
   limparCamposBtn.addEventListener('click', limparCampos);
   excluirItemBtn.addEventListener('click', excluirItem);
   excluirTodosBtn.addEventListener('click', excluirTodos);
   pesquisaInput.addEventListener('input', pesquisarItens);
 
-  // Função para adicionar item à lista
+  //adicionar item à lista
   function adicionarItem() {
       const nome = document.getElementById('nome').value;
       const email = document.getElementById('email').value;
@@ -58,12 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
       salvarNoLocalStorage(item);
   }
 
-  // Função para limpar os campos do formulário
+  //limpar os campos do formulário
   function limparCampos() {
       formulario.reset();
   }
 
-  // Função para excluir o item selecionado
+  //excluir o item selecionado
   function excluirItem() {
       const selectedListItem = lista.querySelector('li:hover');
       if (selectedListItem) {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   }
 
-  // Função para excluir todos os itens da lista
+  //excluir todos os itens da lista
   function excluirTodos() {
       while (lista.firstChild) {
           lista.removeChild(lista.firstChild);
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
       limparLocalStorage();
   }
 
-  // Função para pesquisar itens na lista
+  //pesquisar itens na lista
   function pesquisarItens() {
       const termoPesquisa = pesquisaInput.value.toLowerCase();
       const itens = lista.getElementsByTagName('li');
@@ -91,21 +91,21 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Função para salvar item no local storage
+  //salvar item no local storage
   function salvarNoLocalStorage(item) {
       let itens = JSON.parse(localStorage.getItem('itens')) || [];
       itens.push(item);
       localStorage.setItem('itens', JSON.stringify(itens));
   }
 
-  // Função para excluir item do local storage
+  //excluir item do local storage
   function excluirDoLocalStorage(textoItem) {
       let itens = JSON.parse(localStorage.getItem('itens')) || [];
       itens = itens.filter(item => item.nome !== textoItem);
       localStorage.setItem('itens', JSON.stringify(itens));
   }
 
-  // Função para limpar o local storage
+  //limpar o local storage
   function limparLocalStorage() {
       localStorage.removeItem('itens');
   }
